@@ -1,4 +1,4 @@
-import { useFetchClient } from '@strapi/helper-plugin';
+import { request } from '@strapi/helper-plugin';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -9,16 +9,14 @@ import { ExportButton } from '../ExportButton';
 export const InjectedExportCollectionType = () => {
   const [isAllowed, setIsAllowed] = useState(false);
   const { pathname } = useLocation();
-  const { get } = useFetchClient();
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
         const contentType = pathname.split('/')[3]; // Get content type from URL
-        const { data } = await get(`/${pluginId}/config`);
+        const { data } = await request(`/${pluginId}/config`);
+        console.log('data', data);
         const allowedTypes = data?.allowedExportContentTypes || [];
-
-        console.log('allowedTypes', allowedTypes);
 
         // If allowedTypes is empty, all content types are allowed
         // Otherwise, check if current content type is in the allowed list
