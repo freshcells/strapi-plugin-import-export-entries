@@ -1,16 +1,16 @@
 import { Box, Checkbox, ContentLayout, Flex, Link, Option, Select, Typography } from '@strapi/design-system';
 import { CheckPagePermissions } from '@strapi/helper-plugin';
-import range from 'lodash/range';
+// import range from 'lodash/range';
+// import { ExportButton } from '../../components/ExportButton';
+// import { ImportButton } from '../../components/ImportButton';
+// import { dataFormats } from '../../utils/dataFormats';
 import React, { memo, useState } from 'react';
 
-import { ExportButton } from '../../components/ExportButton';
 import { Header } from '../../components/Header';
-import { ImportButton } from '../../components/ImportButton';
 import { Alerts } from '../../components/Injected/Alerts';
 import { useI18n } from '../../hooks/useI18n';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { pluginPermissions } from '../../permissions';
-import { dataFormats } from '../../utils/dataFormats';
 
 const HomePage = () => {
   const { i18n } = useI18n();
@@ -29,11 +29,12 @@ const HomePage = () => {
 
       <ContentLayout>
         <Flex direction="column" alignItems="start" gap={8}>
-          <Box style={{ alignSelf: 'stretch' }} background="neutral0" padding="32px" hasRadius={true}>
+          {/* DO not allow import/export of the whole database at once since ADAC does not need it now */}
+          {/* <Box style={{ alignSelf: 'stretch' }} background="neutral0" padding="32px" hasRadius={true}>
             <Flex direction="column" alignItems="start" gap={6}>
               <Typography variant="alpha">{i18n('plugin.page.homepage.section.quick-actions.title', 'Quick Actions')}</Typography>
-
-              <Box>
+              
+              <Box> 
                 <Flex direction="column" alignItems="start" gap={4}>
                   <Flex gap={4}>
                     <ImportButton />
@@ -42,7 +43,7 @@ const HomePage = () => {
                 </Flex>
               </Box>
             </Flex>
-          </Box>
+          </Box> */}
 
           <Box style={{ alignSelf: 'stretch' }} background="neutral0" padding="32px" hasRadius={true}>
             <Flex direction="column" alignItems="start" gap={6}>
@@ -55,7 +56,8 @@ const HomePage = () => {
                       <Typography>{i18n('plugin.export.apply-filters-and-sort', 'Apply filters and sort to exported data')}</Typography>
                     </Checkbox>
                   </Flex>
-                  <Flex justifyContent="space-between">
+                  {/* Hide this section since ADAC does not need it now */}
+                  {/* <Flex justifyContent="space-between">
                     <Select
                       label={i18n('plugin.export.deepness', 'Deepness')}
                       placeholder={i18n('plugin.export.deepness', 'Deepness')}
@@ -68,13 +70,13 @@ const HomePage = () => {
                         </Option>
                       ))}
                     </Select>
-                  </Flex>
+                  </Flex> */}
                 </Flex>
               </Box>
             </Flex>
           </Box>
-
-          <Box style={{ alignSelf: 'stretch' }} background="neutral0" padding="32px" hasRadius={true}>
+          {/* Hide this section since ADAC does not need it now */}
+          {/* <Box style={{ alignSelf: 'stretch' }} background="neutral0" padding="32px" hasRadius={true}>
             <Flex direction="column" alignItems="start" gap={6}>
               <Typography variant="alpha">{i18n('plugin.page.homepage.section.need-help.title', 'Feature Request / Bug Report')}</Typography>
 
@@ -95,7 +97,7 @@ const HomePage = () => {
                 </Flex>
               </Box>
             </Flex>
-          </Box>
+          </Box> */}
         </Flex>
       </ContentLayout>
 

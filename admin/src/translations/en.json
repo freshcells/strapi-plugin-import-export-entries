@@ -8,11 +8,11 @@
   "plugin.cta.close": "Close",
   "plugin.cta.copy-to-clipboard": "Copy To Clipboard",
   "plugin.cta.download-file": "Download File",
-  "plugin.cta.get-data": "Fetch Data",
+  "plugin.cta.get-data": "Download Data",
   "plugin.cta.export": "Export",
   "plugin.cta.import": "Import",
 
-  "plugin.data-format.csv": "CSV [deprecated]",
+  "plugin.data-format.csv": "CSV",
   "plugin.data-format.json": "JSON [deprecated]",
   "plugin.data-format.json-v2": "JSON (v2)",
 

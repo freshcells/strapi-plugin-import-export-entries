@@ -10,7 +10,7 @@
   "plugin.cta.get-data": "Отримати дані",
   "plugin.cta.export": "Експорт",
   "plugin.cta.import": "Імпорт",
-  "plugin.data-format.csv": "CSV [не підтримується]",
+  "plugin.data-format.csv": "CSV",
   "plugin.data-format.json": "JSON [застаріле]",
   "plugin.data-format.json-v2": "JSON (версія 2)",
   "plugin.form.field.id-field.hint": "Виберіть поле, яке використовується як унікальний ідентифікатор",

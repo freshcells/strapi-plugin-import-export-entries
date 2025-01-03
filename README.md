@@ -371,7 +371,7 @@ The filtering and sorting mechanism relies on Strapi filtering and sorting featu
   <img src="./doc/scr-check-apply-filters-sort-option.png" alt="UI" width="500"/>
 </p>
 
-3. Click on _Fetch Data_.
+3. Click on _Download Data_.
 
 The exported data is filtered and sorted as expected.
 

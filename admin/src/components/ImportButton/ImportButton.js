@@ -1,33 +1,35 @@
-import { Button } from '@strapi/design-system';
-import { CheckPermissions } from '@strapi/helper-plugin';
-import Upload from '@strapi/icons/Upload';
-import React, { useState } from 'react';
-import { useIntl } from 'react-intl';
+// import { Button } from '@strapi/design-system';
+// import { CheckPermissions } from '@strapi/helper-plugin';
+// import Upload from '@strapi/icons/Upload';
+// import React, { useState } from 'react';
+// import { useIntl } from 'react-intl';
 
-import { pluginPermissions } from '../../permissions';
-import getTrad from '../../utils/getTrad';
-import { ImportModal } from '../ImportModal';
+// import { pluginPermissions } from '../../permissions';
+// import getTrad from '../../utils/getTrad';
+// import { ImportModal } from '../ImportModal';
 
 export const ImportButton = ({ fullWidth = false }) => {
-  const { formatMessage } = useIntl();
+  return null; // Disable import since ADAC does not need it now
 
-  const [importVisible, setImportVisible] = useState(false);
+  // const { formatMessage } = useIntl();
 
-  const openImportModal = () => {
-    setImportVisible(true);
-  };
+  // const [importVisible, setImportVisible] = useState(false);
 
-  const closeImportModal = () => {
-    setImportVisible(false);
-  };
+  // const openImportModal = () => {
+  //   setImportVisible(true);
+  // };
 
-  return (
-    <CheckPermissions permissions={pluginPermissions.importButton}>
-      <Button startIcon={<Upload />} onClick={openImportModal} fullWidth={fullWidth}>
-        {formatMessage({ id: getTrad('plugin.cta.import') })}
-      </Button>
+  // const closeImportModal = () => {
+  //   setImportVisible(false);
+  // };
 
-      {importVisible && <ImportModal onClose={closeImportModal} />}
-    </CheckPermissions>
-  );
+  // return (
+  //   <CheckPermissions permissions={pluginPermissions.importButton}>
+  //     <Button startIcon={<Upload />} onClick={openImportModal} fullWidth={fullWidth}>
+  //       {formatMessage({ id: getTrad('plugin.cta.import') })}
+  //     </Button>
+
+  //     {importVisible && <ImportModal onClose={closeImportModal} />}
+  //   </CheckPermissions>
+  // );
 };

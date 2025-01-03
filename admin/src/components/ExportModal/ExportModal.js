@@ -18,14 +18,14 @@ import { handleRequestErr } from '../../utils/error';
 import { Editor } from '../Editor';
 
 const DEFAULT_OPTIONS = {
-  exportFormat: dataFormats.JSON_V2,
+  exportFormat: dataFormats.CSV, // ONLY ALLOW CSV FOR NOW
   applyFilters: false,
-  relationsAsId: false,
+  relationsAsId: true, // Use relations as id as default
   deepness: 5,
   exportPluginsContentTypes: false,
 };
 
-export const ExportModal = ({ availableExportFormats = [dataFormats.CSV, dataFormats.JSON_V2, dataFormats.JSON], unavailableOptions = [], onClose }) => {
+export const ExportModal = ({ availableExportFormats = [dataFormats.CSV /* ONLY ALLOW CSV FOR NOW - , dataFormats.JSON_V2, dataFormats.JSON*/], unavailableOptions = [], onClose }) => {
   const { i18n } = useI18n();
   const { search } = useLocation();
   const { downloadFile, withTimestamp } = useDownloadFile();
@@ -55,7 +55,9 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV, dataFor
         deepness: options.deepness,
         exportPluginsContentTypes: options.exportPluginsContentTypes,
       });
-      setData(res.data);
+      setData(res.data, () => {
+        writeDataToFile();
+      });
     } catch (err) {
       handleRequestErr(err, {
         403: () => notify(i18n('plugin.message.export.error.forbidden.title'), i18n('plugin.message.export.error.forbidden.message'), 'danger'),
@@ -77,10 +79,10 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV, dataFor
     downloadFile(data, withTimestamp(fileName), `${fileContentType};charset=utf-8;`);
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(data);
-    notify(i18n('plugin.export.copied'), '', 'success');
-  };
+  // const copyToClipboard = () => {
+  //   navigator.clipboard.writeText(data);
+  //   notify(i18n('plugin.export.copied'), '', 'success');
+  // };
 
   const clearData = () => {
     setData(null);
@@ -161,11 +163,11 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV, dataFor
               </Flex>
             </>
           )}
-          {data && !fetchingData && (
+          {/* {data && !fetchingData && (
             <>
               <Editor content={data} language={dataFormatConfigs[options.exportFormat].language} />
             </>
-          )}
+          )} */}
         </ModalBody>
         <ModalFooter
           startActions={
@@ -180,14 +182,14 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV, dataFor
           endActions={
             <>
               {!data && <Button onClick={getData}>{i18n('plugin.cta.get-data')}</Button>}
-              {!!data && (
+              {/* {!!data && (
                 <>
                   <Button variant="secondary" onClick={copyToClipboard}>
                     {i18n('plugin.cta.copy-to-clipboard')}
                   </Button>
                   <Button onClick={writeDataToFile}>{i18n('plugin.cta.download-file')}</Button>
                 </>
-              )}
+              )} */}
             </>
           }
         />
