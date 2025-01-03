@@ -3,13 +3,19 @@ import { CheckPermissions } from '@strapi/helper-plugin';
 import React from 'react';
 import { useIntl } from 'react-intl';
 
+import { useIsAllowedContentType } from '../../hooks/useIsAllowedContentType';
 import { pluginPermissions } from '../../permissions';
 import getTrad from '../../utils/getTrad';
 import { ExportButton } from '../ExportButton';
-import { ImportButton } from '../ImportButton';
+// import { ImportButton } from '../ImportButton';
 
 export const InjectedImportExportSingleType = () => {
   const { formatMessage } = useIntl();
+  const isAllowed = useIsAllowedContentType();
+
+  if (!isAllowed) {
+    return null;
+  }
 
   return (
     <CheckPermissions permissions={pluginPermissions.main}>
@@ -23,7 +29,7 @@ export const InjectedImportExportSingleType = () => {
 
         <Box paddingBottom={1}>
           <Flex direction="column" gap={2}>
-            <ImportButton fullWidth />
+            {/* <ImportButton fullWidth /> */}
             <ExportButton fullWidth unavailableOptions={['exportPluginsContentTypes']} />
           </Flex>
         </Box>
