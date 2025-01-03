@@ -61,6 +61,7 @@ export const ExportModal = ({
       });
       setData(res.data);
       await writeDataToFile(res.data);
+      onClose();
     } catch (err) {
       handleRequestErr(err, {
         403: () => notify(i18n('plugin.message.export.error.forbidden.title'), i18n('plugin.message.export.error.forbidden.message'), 'danger'),
