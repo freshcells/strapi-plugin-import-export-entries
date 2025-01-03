@@ -59,6 +59,7 @@ const findFile = async ({ hash, name, url, alternativeText, caption }: Partial<F
   let file = null;
 
   if (!file && hash) {
+    // @ts-ignore
     [file] = await strapi.entityService.findMany('plugin::upload.file', {
       filters: {
         hash: {

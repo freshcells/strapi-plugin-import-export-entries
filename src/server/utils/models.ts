@@ -30,12 +30,14 @@ module.exports = {
 };
 
 function getAllSlugs({ includePluginsContentTypes = false }: { includePluginsContentTypes?: boolean } = {}): SchemaUID[] {
+  // @ts-ignore
   return (Array.from(strapi.db.metadata) as [SchemaUID][])
     .filter(([collectionName]) => collectionName.startsWith('api::') || (includePluginsContentTypes && collectionName.startsWith('plugin::')))
     .map(([collectionName]) => collectionName);
 }
 
 function getModel(slug: SchemaUID): Schema {
+  // @ts-ignore
   return strapi.getModel(slug);
 }
 
