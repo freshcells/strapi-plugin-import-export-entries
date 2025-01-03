@@ -6,6 +6,37 @@ Import/Export data from and to your database in just few clicks.
   <img src="./doc/logo.png" alt="UI" width="300"/>
 </p>
 
+## Modifications included
+
+- Add config that list the content types that can be exported (allowedExportContentTypes)
+- Disabled the import functionality
+- Updated CSV translation so it is not marked as deprecated
+- Allowed only CSV export format
+- Removed global options from Homepage and from the export modal
+- Simplified the export modal (You do not see the whole data before exporting, you directly donwload a file when clicking to download)
+
+### Publishing package
+
+This is was done manually at the moment.
+
+- Increase the version in the `package.json` file.
+- Run `yarn build`
+- Follow the steps in: https://freshcells.atlassian.net/wiki/spaces/FCSETPM/pages/1918140439/Publish+an+NPM+Package+to+our+registry
+
+### Main Improvements
+
+Plugin improvements:
+
+- Add config to toggle import/export functionality
+- Add tests for CSV and make it really not deprecated
+- Handle relations not only as ids for CSV export (At the moment the config was updated to allow relations only as ids for CSV export, maybe it works already and it is just not tested)
+
+Infrastructure improvements:
+
+- Add semantic release and a github action to automatically update the version and publish the plugin to the npm registry.
+
+There might be other relavant improvements to do, those are only the main ones.
+
 ## Features
 
 ### Import
