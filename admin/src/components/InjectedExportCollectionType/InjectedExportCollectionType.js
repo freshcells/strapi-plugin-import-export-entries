@@ -7,7 +7,7 @@ import pluginId from '../../pluginId';
 import { ExportButton } from '../ExportButton';
 
 export const InjectedExportCollectionType = () => {
-  const [isAllowed, setIsAllowed] = useState(true);
+  const [isAllowed, setIsAllowed] = useState(false);
   const { pathname } = useLocation();
   const { get } = useFetchClient();
 
@@ -17,6 +17,8 @@ export const InjectedExportCollectionType = () => {
         const contentType = pathname.split('/')[3]; // Get content type from URL
         const { data } = await get(`/${pluginId}/config`);
         const allowedTypes = data?.allowedExportContentTypes || [];
+
+        console.log('allowedTypes', allowedTypes);
 
         // If allowedTypes is empty, all content types are allowed
         // Otherwise, check if current content type is in the allowed list
@@ -29,6 +31,8 @@ export const InjectedExportCollectionType = () => {
 
     fetchConfig();
   }, [pathname]);
+
+  console.log('isAllowed', isAllowed);
 
   if (!isAllowed) {
     return null;
