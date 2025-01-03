@@ -4,6 +4,7 @@ const { CustomSlugs } = require('../../../config/constants');
 const { getService } = require('../../../utils');
 const { getAllSlugs } = require('../../../utils/models');
 const { handleAsyncError } = require('../../content-api/utils');
+const pluginId = require('../../../utils/pluginId');
 
 const exportData = async (ctx) => {
   if (!hasPermissions(ctx)) {
@@ -39,5 +40,14 @@ const hasPermissions = (ctx) => {
 };
 
 module.exports = ({ strapi }) => ({
+  getConfig: async (ctx) => {
+    const config = strapi.config.get(`plugin.${pluginId}`);
+    ctx.body = {
+      data: {
+        allowedExportContentTypes: config.allowedExportContentTypes || [],
+      },
+    };
+  },
+
   exportData: handleAsyncError(exportData),
 });
