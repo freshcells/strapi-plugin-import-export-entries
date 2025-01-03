@@ -30,7 +30,7 @@ export const InjectedImportExportSingleType = () => {
         <Box paddingBottom={1}>
           <Flex direction="column" gap={2}>
             {/* <ImportButton fullWidth /> */}
-            <ExportButton fullWidth unavailableOptions={['exportPluginsContentTypes']} />
+            <ExportButton fullWidth unavailableOptions={['exportPluginsContentTypes', 'relationsAsId', 'deepness']} />
           </Flex>
         </Box>
       </Box>
