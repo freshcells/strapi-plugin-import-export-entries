@@ -1,4 +1,4 @@
-import { useFetchClient, useRuntimeStore } from '@strapi/helper-plugin';
+import { useFetchClient } from '@strapi/helper-plugin';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -10,7 +10,6 @@ export const InjectedExportCollectionType = () => {
   const [isAllowed, setIsAllowed] = useState(true);
   const { pathname } = useLocation();
   const { get } = useFetchClient();
-  const runtimeStore = useRuntimeStore();
 
   useEffect(() => {
     const fetchConfig = async () => {
