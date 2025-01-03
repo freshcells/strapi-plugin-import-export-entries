@@ -30,6 +30,7 @@ Plugin improvements:
 - Add config to toggle import/export functionality
 - Add tests for CSV and make it really not deprecated
 - Handle relations not only as ids for CSV export (At the moment the config was updated to allow relations only as ids for CSV export, maybe it works already and it is just not tested)
+- Fix all typescript errors that were ignored
 
 Infrastructure improvements:
 
