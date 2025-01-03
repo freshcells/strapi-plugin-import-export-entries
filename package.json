@@ -46,10 +46,9 @@
     "@babel/eslint-parser": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@faker-js/faker": "^7.5.0",
-    "@strapi/plugin-i18n": "^4.10.5",
-    "@strapi/plugin-seo": "^1.8.0",
-    "@strapi/plugin-users-permissions": "^4.10.5",
-    "@strapi/strapi": "^4.10.5",
+    "@strapi/plugin-i18n": "^4.14.6",
+    "@strapi/plugin-users-permissions": "^4.14.6",
+    "@strapi/strapi": "^4.14.6",
     "@types/fs-extra": "^11.0.1",
     "@types/jest": "^29.5.8",
     "@types/node-fetch": "^2.6.3",
@@ -67,7 +66,7 @@
     "typescript": "^5.0.3"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.10.5"
+    "@strapi/strapi": "^4.14.6"
   },
   "author": {
     "name": "Baboo",
@@ -101,5 +100,6 @@
     "url": "https://github.com/Baboo7/strapi-plugin-import-export-entries/issues"
   },
   "homepage": "https://github.com/Baboo7/strapi-plugin-import-export-entries#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@4.6.0"
 }
