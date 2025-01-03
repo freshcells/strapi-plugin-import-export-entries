@@ -15,7 +15,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSlug } from '../../hooks/useSlug';
 import { dataFormatConfigs, dataFormats } from '../../utils/dataFormats';
 import { handleRequestErr } from '../../utils/error';
-import { Editor } from '../Editor';
+// import { Editor } from '../Editor';
 
 const DEFAULT_OPTIONS = {
   exportFormat: dataFormats.CSV, // ONLY ALLOW CSV FOR NOW
@@ -25,7 +25,11 @@ const DEFAULT_OPTIONS = {
   exportPluginsContentTypes: false,
 };
 
-export const ExportModal = ({ availableExportFormats = [dataFormats.CSV /* ONLY ALLOW CSV FOR NOW - , dataFormats.JSON_V2, dataFormats.JSON*/], unavailableOptions = [], onClose }) => {
+export const ExportModal = ({
+  availableExportFormats = [dataFormats.CSV /* ONLY ALLOW CSV FOR NOW - , dataFormats.JSON_V2, dataFormats.JSON*/],
+  unavailableOptions = [],
+  onClose,
+}) => {
   const { i18n } = useI18n();
   const { search } = useLocation();
   const { downloadFile, withTimestamp } = useDownloadFile();
@@ -55,9 +59,8 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV /* ONLY 
         deepness: options.deepness,
         exportPluginsContentTypes: options.exportPluginsContentTypes,
       });
-      setData(res.data, () => {
-        writeDataToFile();
-      });
+      setData(res.data);
+      await writeDataToFile(res.data);
     } catch (err) {
       handleRequestErr(err, {
         403: () => notify(i18n('plugin.message.export.error.forbidden.title'), i18n('plugin.message.export.error.forbidden.message'), 'danger'),
@@ -68,7 +71,7 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV /* ONLY 
     }
   };
 
-  const writeDataToFile = async () => {
+  const writeDataToFile = async (dataParam) => {
     const config = dataFormatConfigs[options.exportFormat];
     if (!config) {
       throw new Error(`File extension ${options.exportFormat} not supported to export data.`);
@@ -76,7 +79,7 @@ export const ExportModal = ({ availableExportFormats = [dataFormats.CSV /* ONLY 
 
     const { fileExt, fileContentType } = config;
     const fileName = `export_${slug}.${fileExt}`.replaceAll(':', '-').replaceAll('--', '-');
-    downloadFile(data, withTimestamp(fileName), `${fileContentType};charset=utf-8;`);
+    downloadFile(dataParam ? dataParam : data, withTimestamp(fileName), `${fileContentType};charset=utf-8;`);
   };
 
   // const copyToClipboard = () => {
